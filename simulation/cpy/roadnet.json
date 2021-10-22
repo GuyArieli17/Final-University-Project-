@@ -1383,7 +1383,7 @@
               ]
             },
             {
-              "startLaneIndex": 0,
+              "startLaneIndex": 1,
               "endLaneIndex": 1,
               "points": [
                 {
@@ -1433,7 +1433,7 @@
               ]
             },
             {
-              "startLaneIndex": 0,
+              "startLaneIndex": 2,
               "endLaneIndex": 2,
               "points": [
                 {
@@ -1978,12 +1978,7 @@
           {
             "time": 5,
             "availableRoadLinks": [
-              2,
-              3,
-              4,
-              5,
-              6,
-              7
+              
             ]
           },
           {

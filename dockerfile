@@ -16,7 +16,8 @@ RUN pip install gym && \
     pip install IPython && \
     python -m pip install python-dotenv
 
-
-
 # Copy all file from current location - ignore files
 COPY . .
+
+# run the main function to create replay
+RUN   python src/test.py

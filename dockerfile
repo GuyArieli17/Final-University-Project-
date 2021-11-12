@@ -20,4 +20,4 @@ RUN pip install gym && \
 COPY . .
 
 # run the main function to create replay
-RUN   python src/test.py
+RUN python src/test.py

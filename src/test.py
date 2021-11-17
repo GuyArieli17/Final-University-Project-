@@ -6,6 +6,23 @@ from json_handler import JsonHandler
 
 load_dotenv()
 
+
+class API:
+
+    def __init__(self)->None:
+        self.eng = cityflow.Engine(os.getenv("CONFIG_JSON_FILE"))
+
+    def 
+
+
+
+
+
+
+
+
+
+
 eng = cityflow.Engine(os.getenv("CONFIG_JSON_FILE"))
 lst = 5 #number of lightphases in roadnet file
 j=0

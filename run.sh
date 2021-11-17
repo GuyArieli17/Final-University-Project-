@@ -1,5 +1,4 @@
-echo "Pleas Enter Road Gird x,y"
-
+# echo "Pleas Enter Road Gird x,y"
 
 echo "Build simulation image:"
 docker build -t simulation .

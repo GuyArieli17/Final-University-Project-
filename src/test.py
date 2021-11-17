@@ -20,6 +20,14 @@ print('Hello World')
 
 
 
+# = > get info from rl
+# = > see new state in 
+
+
+# = > get state in run time  || 
+# = > 
+
+
 
 
 

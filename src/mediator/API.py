@@ -1,19 +1,20 @@
 import numpy as np
 import cityflow
 import random
-
+from actions import Action
+from state import State
 class Cityflow_API:
 
-    def __init__(self,config,dimension=[1,1],n_steps=100) -> None:
+    def __init__(self,config,dimension=[1,1],n_steps=100):
         self.eng = cityflow.Engine(config) # city flow engine
         self.n_steps = n_steps
         self.dimension = np.array(dimension) # set the diminstion we will use
         self.number_of_state_delta = 0
 
-    def next_frame(self)->None:
+    def next_frame(self):
         self.eng.next_step()
 
-    def get_state(self)-> dict:
+    def get_state(self)-> State:
         state = dict()
         n_vehicle = self.eng.get_vehicle_count()
         vehicle_lst = self.eng.get_vehicles(include_waiting=False)
@@ -42,7 +43,7 @@ class Cityflow_API:
         self.eng.set_vehicle_route(vehicle_id,route)
         self.eng.set_vehicle_speed(vehicle_id, speed)
 
-    def set_action(self,action:list)->None:
+    def set_action(self,action:Action)->bool: 
         #TODO: How to autamte network without changing the json
         intersection_id , phase_id = action
         self.eng.set_tl_phase(intersection_id, phase_id)

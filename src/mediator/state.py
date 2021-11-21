@@ -31,3 +31,5 @@ class State:
         # get_leader(vehicle_id)
         # get_current_time()
 
+    def get_state(self):
+        return self.state_dict

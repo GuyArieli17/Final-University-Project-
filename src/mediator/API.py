@@ -1,8 +1,8 @@
 import numpy as np
 import cityflow
 import random
-from actions import Action
-from state import State
+from mediator.actions import Action
+from mediator.state import State
 class Cityflow_API:
 
     def __init__(self,config,dimension=[1,1],n_steps=100):
@@ -32,11 +32,11 @@ class Cityflow_API:
             self.eng.set_vehicle_route(vehicle_id,route) # retun T/F
             self.eng.set_vehicle_speed(vehicle_id, speed)
 
-    def set_action(self,phase_id:int)->bool: 
+    def set_action(self,intersection_id:str, phase_id:int)->bool: 
         """
         phase_id - number of action which should to execute
         """
         #TODO: How to create a automaton network without changing the json
-        intersection_id = 0
+        # intersection_id = 0
         # phase_id
         self.eng.set_tl_phase(intersection_id, phase_id)

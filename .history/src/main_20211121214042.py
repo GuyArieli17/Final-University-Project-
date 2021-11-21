@@ -13,14 +13,11 @@
 #         print(api.get_state())
 #     api.next_frame()
 
-import numpy as np
-from models.Abstract.ReplayMemory import ReplayMemory
 
-size = 20
+from models.Memory.ReplayMemory import ReplayMemory
+size = 5
 batch_size = 10
-
-states, actions, rewards, next_states, dones = np.array([1 for i in range(size)]),[1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)]
-rm = ReplayMemory(capacity=size-2)
+states, actions, rewards, next_states, dones = [1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)]
+rm = ReplayMemory(capacity=20)
 rm.push(states, actions, rewards, next_states, dones)
 print(rm.sample(batch_size))
-

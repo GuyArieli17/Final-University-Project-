@@ -14,13 +14,11 @@
 #     api.next_frame()
 
 import numpy as np
-from models.Abstract.ReplayMemory import ReplayMemory
-
+from models.Memory.ReplayMemory import ReplayMemory
 size = 20
 batch_size = 10
-
 states, actions, rewards, next_states, dones = np.array([1 for i in range(size)]),[1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)],[1 for i in range(size)]
-rm = ReplayMemory(capacity=size-2)
+rm = ReplayMemory(capacity=size)
 rm.push(states, actions, rewards, next_states, dones)
-print(rm.sample(batch_size))
-
+# print(rm.sample(batch_size))
+print(np.random.choice(size,batch_size,replace=False))

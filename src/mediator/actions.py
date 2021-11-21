@@ -1,4 +1,3 @@
-
 class Action:
     """
     Each action is a dictionary which contains 4 lists: 
@@ -43,13 +42,13 @@ class Action:
                 'WEST' : [0,0,0]
             },
             # right and straight south, north
-            5: { 'SOUTH' : [0,1,1],
+            6: { 'SOUTH' : [0,1,1],
                 'NORTH' : [0,1,1],
                 'EAST' : [0,0,0],
                 'WEST' : [0,0,0] 
             }, 
             # leftright and straight south, north
-            6: { 'SOUTH' : [0,0,0],
+            7: { 'SOUTH' : [0,0,0],
                 'NORTH' : [1,1,1],
                 'EAST' : [0,0,0], 
                 'WEST' : [0,0,0] 

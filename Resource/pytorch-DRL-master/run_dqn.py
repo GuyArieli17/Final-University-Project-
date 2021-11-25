@@ -14,7 +14,7 @@ EVAL_EPISODES = 10
 EVAL_INTERVAL = 100
 
 # max steps in each episode, prevent from running too long
-MAX_STEPS = 10000 # None
+MAX_STEPS = 10000  # None
 
 MEMORY_CAPACITY = 10000
 BATCH_SIZE = 100
@@ -53,23 +53,24 @@ def run(env_id="CartPole-v0"):
               epsilon_decay=EPSILON_DECAY, max_grad_norm=MAX_GRAD_NORM,
               episodes_before_train=EPISODES_BEFORE_TRAIN)
 
-    episodes =[]
-    eval_rewards =[]
+    episodes = []
+    eval_rewards = []
     while dqn.n_episodes < MAX_EPISODES:
         dqn.interact()
         if dqn.n_episodes >= EPISODES_BEFORE_TRAIN:
             dqn.train()
-        if dqn.episode_done and ((dqn.n_episodes+1)%EVAL_INTERVAL == 0):
+        if dqn.episode_done and ((dqn.n_episodes+1) % EVAL_INTERVAL == 0):
             rewards, _ = dqn.evaluation(env_eval, EVAL_EPISODES)
             rewards_mu, rewards_std = agg_double_list(rewards)
-            print("Episode %d, Average Reward %.2f" % (dqn.n_episodes+1, rewards_mu))
+            print("Episode %d, Average Reward %.2f" %
+                  (dqn.n_episodes+1, rewards_mu))
             episodes.append(dqn.n_episodes+1)
             eval_rewards.append(rewards_mu)
 
     episodes = np.array(episodes)
     eval_rewards = np.array(eval_rewards)
-    np.savetxt("./output/%s_dqn_episodes.txt"%env_id, episodes)
-    np.savetxt("./output/%s_dqn_eval_rewards.txt"%env_id, eval_rewards)
+    np.savetxt("./output/%s_dqn_episodes.txt" % env_id, episodes)
+    np.savetxt("./output/%s_dqn_eval_rewards.txt" % env_id, eval_rewards)
 
     plt.figure()
     plt.plot(episodes, eval_rewards)
@@ -77,7 +78,7 @@ def run(env_id="CartPole-v0"):
     plt.xlabel("Episode")
     plt.ylabel("Average Reward")
     plt.legend(["DQN"])
-    plt.savefig("./output/%s_dqn.png"%env_id)
+    plt.savefig("./output/%s_dqn.png" % env_id)
 
 
 if __name__ == "__main__":

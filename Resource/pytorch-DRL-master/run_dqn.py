@@ -8,15 +8,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-MAX_EPISODES = 5000
+MAX_EPISODES = 5_000
 EPISODES_BEFORE_TRAIN = 0
 EVAL_EPISODES = 10
 EVAL_INTERVAL = 100
 
 # max steps in each episode, prevent from running too long
-MAX_STEPS = 10000  # None
+MAX_STEPS = 10_000  # None
 
-MEMORY_CAPACITY = 10000
+MEMORY_CAPACITY = 10_000
 BATCH_SIZE = 100
 CRITIC_LOSS = "mse"
 MAX_GRAD_NORM = None
@@ -33,12 +33,15 @@ RANDOM_SEED = 2017
 
 
 def run(env_id="CartPole-v0"):
-
+    # create env run
     env = gym.make(env_id)
+    # create random seed - all run will be the same
     env.seed(RANDOM_SEED)
+    # create val env
     env_eval = gym.make(env_id)
+    # create random seed - all run will be the same
     env_eval.seed(RANDOM_SEED)
-    state_dim = env.observation_space.shape[0]
+    state_dim: int = env.observation_space.shape[0]
     if len(env.action_space.shape) > 1:
         action_dim = env.action_space.shape[0]
     else:
@@ -52,7 +55,7 @@ def run(env_id="CartPole-v0"):
               epsilon_start=EPSILON_START, epsilon_end=EPSILON_END,
               epsilon_decay=EPSILON_DECAY, max_grad_norm=MAX_GRAD_NORM,
               episodes_before_train=EPISODES_BEFORE_TRAIN)
-
+    #
     episodes = []
     eval_rewards = []
     while dqn.n_episodes < MAX_EPISODES:

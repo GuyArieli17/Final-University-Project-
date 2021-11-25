@@ -1,11 +1,10 @@
-
-import torch as th
-
-import numpy as np
+from abc import abstractmethod
 
 from common.Memory import ReplayMemory
 from common.utils import identity
-
+import torch as th
+import numpy as np
+import gym
 
 class Agent(object):
     """
@@ -15,14 +14,14 @@ class Agent(object):
         - _take_n_steps: take n steps
         - _discount_reward: discount roll out rewards
     - train: train on a sample batch
-        - _soft_update_target: soft update the target network
+        - _soft_update_target1: soft update the target network
     - exploration_action: choose an action based on state with random noise
                             added for exploration in training
     - action: choose an action based on state for execution
     - value: evaluate value for a state-action pair
     - evaluation: evaluation a learned agent
     """
-    def __init__(self, env, state_dim, action_dim,
+    def __init__(self, env: gym.wrappers.time_limit.TimeLimit, state_dim: int, action_dim: int,
                  memory_capacity=10000, max_steps=10000,
                  reward_gamma=0.99, reward_scale=1., done_penalty=None,
                  actor_hidden_size=32, critic_hidden_size=32,
@@ -34,44 +33,45 @@ class Agent(object):
                  use_cuda=True):
 
         self.env = env
-        self.state_dim = state_dim
-        self.action_dim = action_dim
-        self.env_state = self.env.reset()
-        self.n_episodes = 0
-        self.n_steps = 0
-        self.max_steps = max_steps
-        self.roll_out_n_steps = 1
+        self.state_dim: int = state_dim
+        self.action_dim: int = action_dim
+        self.env_state: np.ndarray = self.env.reset()  # get  state zero of env
+        self.n_episodes: int = 0
+        self.n_steps: int = 0
+        self.max_steps: int = max_steps
+        self.roll_out_n_steps: int = 1
 
-        self.reward_gamma = reward_gamma
-        self.reward_scale = reward_scale
-        self.done_penalty = done_penalty
+        self.reward_gamma: float = reward_gamma
+        self.reward_scale: float = reward_scale
+        self.done_penalty: float = done_penalty
 
-        self.memory = ReplayMemory(memory_capacity)
-        self.actor_hidden_size = actor_hidden_size
-        self.critic_hidden_size = critic_hidden_size
-        self.actor_output_act = actor_output_act
-        self.critic_loss = critic_loss
-        self.actor_lr = actor_lr
-        self.critic_lr = critic_lr
-        self.optimizer_type = optimizer_type
-        self.entropy_reg = entropy_reg
-        self.max_grad_norm = max_grad_norm
-        self.batch_size = batch_size
-        self.episodes_before_train = episodes_before_train
-        self.target_tau = 0.01
+        self.memory: ReplayMemory = ReplayMemory(memory_capacity)
+        self.actor_hidden_size: int = actor_hidden_size
+        self.critic_hidden_size: int = critic_hidden_size
+        self.actor_output_act: int = actor_output_act
+        self.critic_loss: str = critic_loss
+        self.actor_lr: float = actor_lr
+        self.critic_lr: float = critic_lr
+        self.optimizer_type: str = optimizer_type
+        self.entropy_reg: float = entropy_reg
+        self.max_grad_norm: float = max_grad_norm
+        self.batch_size: int = batch_size
+        self.episodes_before_train: int = episodes_before_train
+        self.target_tau: float = 0.01
 
         # params for epsilon greedy
-        self.epsilon_start = epsilon_start
-        self.epsilon_end = epsilon_end
-        self.epsilon_decay = epsilon_decay
+        self.epsilon_start: float = epsilon_start
+        self.epsilon_end: float = epsilon_end
+        self.epsilon_decay: float = epsilon_decay
 
         self.use_cuda = use_cuda and th.cuda.is_available()
 
     # agent interact with the environment to collect experience
     def interact(self):
         pass
+        # NotImplementedError
 
-    # take one step
+    # take one step in env
     def _take_one_step(self):
         if (self.max_steps is not None) and (self.n_steps >= self.max_steps):
             self.env_state = self.env.reset()

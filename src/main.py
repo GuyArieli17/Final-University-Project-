@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv
 from mediator.API import Cityflow_API
 
+# Todo: write the states into file
+
 load_dotenv()
 # crate city flow instance
 api = Cityflow_API(os.getenv("CONFIG_JSON_FILE"))

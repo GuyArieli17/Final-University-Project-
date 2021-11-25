@@ -1,2 +1,4 @@
 .env
 ./container-output/*
+container-output/replay.txt
+container-output/roadnet.json

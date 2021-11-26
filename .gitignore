@@ -2,3 +2,4 @@
 ./container-output/*
 container-output/replay.txt
 container-output/roadnet.json
+container-output/states.txt

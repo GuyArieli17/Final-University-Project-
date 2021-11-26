@@ -13,23 +13,25 @@ class Cityflow_API:
         self.dimension = np.array(dimension)  # set the diminstion we will use
         self.number_of_state_delta = 0
 
+    def reset(self):
+        self.eng.reset()
+
     def next_frame(self):
         self.eng.next_step()
 
     def get_state(self) -> State:
-        # Initiate a state instance
         state = State(self.eng)
         return state.get_state()
 
     def stochastic(self):
-        # TODO: implemnt random routs from randoms cars
+        # TODO: implemnt random routes from randoms cars
         rand_num = random.random()
         all_vehicles = self.eng.get_vehicles(include_waiting=False)
         waiting_vehicle_lst = self.eng.get_vehicles(include_waiting=True)
         driving_vehicle_lst = list(all_vehicles-waiting_vehicle_lst)
 
         for vehicle_id in driving_vehicle_lst:
-            route = 0  # a list of road ids (doesn’t include the current road)
+            route = 0  # a list of road id's (doesn’t include the current road)
             speed = 0
             self.eng.set_vehicle_route(vehicle_id, route)  # retun T/F
             self.eng.set_vehicle_speed(vehicle_id, speed)

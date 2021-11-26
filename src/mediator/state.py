@@ -4,29 +4,25 @@ import numpy as np
 class State:
 
     def __init__(self, engine):
-        self.state_dict = dict()
-
         # count_vehicle : int
         # return the number of total running vehicles
-        count_vehicle = engine.get_vehicle_count()
+        # count_vehicle = engine.get_vehicle_count()
 
         # count_vehicle_by_lane : dict
         # return a dict with lane id as key and the vehicle number as value
-        count_vehicle_by_lane = engine.get_lane_vehicle_count()
+        # count_vehicle_by_lane = engine.get_lane_vehicle_count()
 
         # count_vehicle_waiting_by_lane : dict
         # return a dict with lane id as key and the number of waiting vehicles as value
-        count_vehicle_waiting_by_lane = engine.get_lane_waiting_vehicle_count()
+        count_vehicle_waiting_by_lane: dict = engine.get_lane_waiting_vehicle_count()
+        count_vehicle_waiting = sum(count_vehicle_waiting_by_lane.values())
 
-        # avg_travel_time : dict
+        # avg_travel_time : double
         # return a dict with lane id as key and the number of waiting vehicles as value
-        avg_travel_time = engine.get_average_travel_time()
+        # avg_travel_time = engine.get_average_travel_time()
 
         self.state = np.array([
-            count_vehicle,
-            count_vehicle_by_lane,
-            count_vehicle_waiting_by_lane,
-            avg_travel_time
+            count_vehicle_waiting
         ])
 
         # vehicle_lst = self.eng.get_vehicles(include_waiting=False) # get vehicle ids
@@ -39,4 +35,4 @@ class State:
         # get_current_time()
 
     def get_state(self):
-        return self.state_dict
+        return self.state

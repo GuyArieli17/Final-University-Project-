@@ -5,6 +5,8 @@ from common.utils import identity
 import torch as th
 import numpy as np
 import gym
+import sys
+
 
 class Agent(object):
     """
@@ -21,6 +23,7 @@ class Agent(object):
     - value: evaluate value for a state-action pair
     - evaluation: evaluation a learned agent
     """
+
     def __init__(self, env: gym.wrappers.time_limit.TimeLimit, state_dim: int, action_dim: int,
                  memory_capacity=10000, max_steps=10000,
                  reward_gamma=0.99, reward_scale=1., done_penalty=None,
@@ -73,16 +76,26 @@ class Agent(object):
 
     # take one step in env
     def _take_one_step(self):
-        if (self.max_steps is not None) and (self.n_steps >= self.max_steps):
-            self.env_state = self.env.reset()
-            self.n_steps = 0
+        # if (self.max_steps is not None) and (self.n_steps >= self.max_steps):
+        #     self.env_state = self.env.reset()
+        #     self.n_steps = 0
         state = self.env_state
         action = self.exploration_action(self.env_state)
         next_state, reward, done, _ = self.env.step(action)
-        if done:
+
+        sys.stdout.write(
+            'next_state:' + str(next_state) + ', \
+             reward:' + str(reward) + ', \
+             done:' + str(done) + ', \
+             n_steps:' + str(self.n_steps) + ', \
+             max_steps:' + str(self.max_steps) + ' \n'
+        )
+
+        if done or ((self.max_steps is not None) and (self.n_steps >= self.max_steps)):
             if self.done_penalty is not None:
                 reward = self.done_penalty
             next_state = [0] * len(state)
+            self.n_steps = 0
             self.env_state = self.env.reset()
             self.n_episodes += 1
             self.episode_done = True

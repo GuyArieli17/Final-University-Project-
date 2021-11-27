@@ -35,7 +35,7 @@ class TrafficSteeringEnvironment(gym.Env):
     def step(self, action):
         prev_state = self.api.get_state()
 
-        self.api.set_action('intersection_1_1', action[0])
+        self.api.set_action('intersection_1_1', action)
         self.api.next_frame()
 
         next_state = self.api.get_state()
@@ -48,4 +48,4 @@ class TrafficSteeringEnvironment(gym.Env):
         # pass
 
 
-t = TrafficSteeringEnvironment()
+# t = TrafficSteeringEnvironment()

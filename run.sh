@@ -5,6 +5,7 @@ docker_container_name=test
 
 #If container exist delete it
 echo "DELETEING EXISTING CONTAINER ..."
+docker container kill $docker_container_name || true
 docker rm $docker_container_name || true
 
 #If image exist delete it
@@ -28,18 +29,11 @@ docker run --name $docker_container_name -d simulation
 echo
 
 
-echo "Copy replay file and paste in ./container-output"
-docker cp $docker_container_name:/usr/python-code/simulation/replay/replay.txt ./container-output
-echo
-
-echo "Copy roadnet file and paste in ./container-output"
-docker cp $docker_container_name:/usr/python-code/simulation/replay/roadnet.json ./container-output
-echo
-
-echo "Copy states file and paste in ./container-output"
-docker cp $docker_container_name:/usr/python-code/states.txt ./container-output
-echo
-
+# echo "Copy files and paste in ./container-output"
+# docker cp -a $docker_container_name:/usr/python-code/container-output/. ./container-output
+# docker cp $docker_container_name:/usr/python-code/simulation/replay/replay.txt ./container-output
+# docker cp $docker_container_name:/usr/python-code/simulation/replay/roadnet.json ./container-output
+# echo
 
 
 # echo "Remove Container"

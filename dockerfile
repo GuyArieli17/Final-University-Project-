@@ -14,10 +14,12 @@ RUN apt-get install -y vim
 RUN pip install gym && \
     pip install numpy && \
     pip install IPython && \
+    pip install torch && \
     python -m pip install python-dotenv
 
 # Copy all file from current location - ignore files
 COPY . .
 
 # run the main function to create replay
-RUN python src/main.py
+# RUN python src/main.py
+CMD ["python", "-u", "src/models/DRL/run_dqn.py" ]

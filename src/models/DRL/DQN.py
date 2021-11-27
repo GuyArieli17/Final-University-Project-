@@ -2,7 +2,7 @@
 import torch as th
 from torch import nn
 from torch.optim import Adam, RMSprop
-
+import sys
 import numpy as np
 
 from common.Agent import Agent
@@ -69,8 +69,9 @@ class DQN(Agent):
 
         # compute Q(s_t, a) - the model computes Q(s_t), then we select the
         # columns of actions taken
-        current_q = self.actor(states_var).gather(1, actions_var)  # the the q value of our state and action
-            # compute V(s_{t+1}) for all next states and all actions,
+        # the the q value of our state and action
+        current_q = self.actor(states_var).gather(1, actions_var)
+        # compute V(s_{t+1}) for all next states and all actions,
         # and we then take max_a { V(s_{t+1}) }
         next_state_action_values = self.actor(next_states_var).detach()
         next_q = th.max(next_state_action_values, 1)[0].view(-1, 1)
@@ -98,6 +99,8 @@ class DQN(Agent):
             action = np.random.choice(self.action_dim)
         else:
             action = self.action(state)
+
+        sys.stdout.write('choose action ' + str(action)+'\n')
         return action
 
     # choose an action based on state for execution

@@ -60,17 +60,22 @@ class DQN(Agent):
         batch = self.memory.sample(self.batch_size)
         states_var = to_tensor_var(
             batch.states, self.use_cuda).view(-1, self.state_dim)
+
         actions_var = to_tensor_var(
             batch.actions, self.use_cuda, "long").view(-1, 1)
+
         rewards_var = to_tensor_var(batch.rewards, self.use_cuda).view(-1, 1)
+
         next_states_var = to_tensor_var(
             batch.next_states, self.use_cuda).view(-1, self.state_dim)
+
         dones_var = to_tensor_var(batch.dones, self.use_cuda).view(-1, 1)
 
         # compute Q(s_t, a) - the model computes Q(s_t), then we select the
         # columns of actions taken
         # the the q value of our state and action
         current_q = self.actor(states_var).gather(1, actions_var)
+
         # compute V(s_{t+1}) for all next states and all actions,
         # and we then take max_a { V(s_{t+1}) }
         next_state_action_values = self.actor(next_states_var).detach()
@@ -95,12 +100,15 @@ class DQN(Agent):
     def exploration_action(self, state):
         epsilon = self.epsilon_end + (self.epsilon_start - self.epsilon_end) * \
             np.exp(-1. * self.n_steps / self.epsilon_decay)
+        sys.stdout.write('epsilon: ' + str(epsilon) + '\n')
         if np.random.rand() < epsilon:
+            sys.stdout.write('exploration action \n')
             action = np.random.choice(self.action_dim)
+            # action = self.env.action_space.sample()
         else:
+            sys.stdout.write('exploitation action \n')
             action = self.action(state)
 
-        sys.stdout.write('choose action ' + str(action)+'\n')
         return action
 
     # choose an action based on state for execution

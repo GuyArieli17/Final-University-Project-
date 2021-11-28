@@ -15,9 +15,8 @@ class TrafficSteeringEnvironment(gym.Env):
         super(TrafficSteeringEnvironment, self).__init__()
 
         # [lightphase]
-        self.action_space = spaces.Box(
-            low=np.array([0]), high=np.array([7]), dtype=np.int64
-        )
+        self.action_space = spaces.Discrete(5)
+        # self.action_space = spaces.Discrete(8)
 
         # [count_vehicle_waiting]
         self.observation_space = spaces.Box(

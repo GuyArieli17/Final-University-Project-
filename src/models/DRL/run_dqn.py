@@ -31,7 +31,7 @@ REWARD_DISCOUNTED_GAMMA = 0.99
 
 EPSILON_START = 0.99
 EPSILON_END = 0.05
-EPSILON_DECAY = 500
+EPSILON_DECAY = 50
 
 DONE_PENALTY = -10.
 
@@ -68,12 +68,12 @@ def run(env_class):
     sys.stdout.write('start EPISODES\n')
 
     while dqn.n_episodes < MAX_EPISODES:
-        sys.stdout.write(str(dqn.n_episodes)+'\n')
+        sys.stdout.write('episode: ' + str(dqn.n_episodes)+ ', n_steps: ' + str(dqn.n_steps) + '\n')
         dqn.interact()
         if dqn.n_episodes >= EPISODES_BEFORE_TRAIN:
             dqn.train()
         if dqn.episode_done and ((dqn.n_episodes+1) % EVAL_INTERVAL == 0):
-            sys.stdout.write('eval ' + str(dqn.n_episodes)+'\n')
+            # sys.stdout.write('eval ' + str(dqn.n_episodes)+'\n')
             # rewards, _ = dqn.evaluation(env_eval, EVAL_EPISODES)
             # rewards_mu, rewards_std = agg_double_list(rewards)
             # sys.stdout.write("Episode %d, Average Reward %.2f" %

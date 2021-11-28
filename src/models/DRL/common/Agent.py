@@ -35,7 +35,7 @@ class Agent(object):
                  epsilon_start=0.9, epsilon_end=0.01, epsilon_decay=200,
                  use_cuda=True):
 
-        self.env = env
+        self.env: gym.Env = env
         self.state_dim: int = state_dim
         self.action_dim: int = action_dim
         self.env_state: np.ndarray = self.env.reset()  # get  state zero of env
@@ -84,11 +84,11 @@ class Agent(object):
         next_state, reward, done, _ = self.env.step(action)
 
         sys.stdout.write(
-            'next_state:' + str(next_state) + ', \
+            'state:' + str(state) + ', \
+             next_state:' + str(next_state) + ', \
              reward:' + str(reward) + ', \
-             done:' + str(done) + ', \
-             n_steps:' + str(self.n_steps) + ', \
-             max_steps:' + str(self.max_steps) + ' \n'
+             action:' + str(action) + ', \
+             n_steps:' + str(self.n_steps) + ' \n'
         )
 
         if done or ((self.max_steps is not None) and (self.n_steps >= self.max_steps)):

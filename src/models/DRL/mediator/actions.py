@@ -6,52 +6,60 @@ class Action:
     """
     actions = {
             # left east and west
-            0: { 'SOUTH' : [0,0,0],
-                'NORTH' : [0,0,0],
+            0: { 
+                'WEST' : [1,0,0],
+                'SOUTH' : [0,0,0],
                 'EAST' : [1,0,0],
-                'WEST' : [1,0,0]
+                'NORTH' : [0,0,0]     
             },
             # left, right and straight west
-            1: { 'SOUTH' : [0,0,0],
-                'NORTH' : [0,0,0],
+            1: { 
+                'WEST' : [1,1,1],
+                'SOUTH' : [0,0,0],
                 'EAST' : [0,0,0],
-                'WEST' : [1,1,1]
+                'NORTH' : [0,0,0] 
             },
             # right and straight east and west
-            2: { 'SOUTH' : [0,0,0],
-                'NORTH' : [0,0,0],
+            2: { 
+                'WEST' : [0,1,1],
+                'SOUTH' : [0,0,0],
                 'EAST' : [0,1,1],
-                'WEST' : [0,1,1]
+                'NORTH' : [0,0,0]
             },
             # left, right and straight east
-            3: { 'SOUTH' : [0,0,0],
-                'NORTH' : [0,0,0],
+            3: { 
+                'WEST' : [0,0,0],
+                'SOUTH' : [0,0,0],
                 'EAST' : [1,1,1],
-                'WEST' : [0,0,0] 
+                'NORTH' : [0,0,0]
             },
             # left south and north
-            4: { 'SOUTH' : [1,0,0],
-                'NORTH' : [1,0,0],
+            4: { 
+                'WEST' : [0,0,0],
+                'SOUTH' : [1,0,0],
                 'EAST' : [0,0,0], 
-                'WEST' : [0,0,0] 
+                'NORTH' : [1,0,0]
             },
             # left, right and straight south
-            5: { 'SOUTH' : [1,1,1],
-                'NORTH' : [0,0,0],
+            5: { 
+                'WEST' : [0,0,0],
+                'SOUTH' : [1,1,1],
                 'EAST' : [0,0,0], 
-                'WEST' : [0,0,0]
+                'NORTH' : [0,0,0]
             },
             # right and straight south, north
-            6: { 'SOUTH' : [0,1,1],
-                'NORTH' : [0,1,1],
+            6: { 
+                'WEST' : [0,0,0],
+                'SOUTH' : [0,1,1],
                 'EAST' : [0,0,0],
-                'WEST' : [0,0,0] 
+                'NORTH' : [0,1,1]
             }, 
             # leftright and straight south, north
-            7: { 'SOUTH' : [0,0,0],
-                'NORTH' : [1,1,1],
+            7: { 
+                'WEST' : [0,0,0],
+                'SOUTH' : [0,0,0],
                 'EAST' : [0,0,0], 
-                'WEST' : [0,0,0] 
+                'NORTH' : [1,1,1]
             },
     }
     

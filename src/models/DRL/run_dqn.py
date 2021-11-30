@@ -13,14 +13,14 @@ from mediator.custom_enviroment import TrafficSteeringEnvironment
 
 
 # MAX_EPISODES = 5_000
-MAX_EPISODES = 5
+MAX_EPISODES = 1
 EPISODES_BEFORE_TRAIN = 0
 EVAL_EPISODES = 10
 EVAL_INTERVAL = 1
 
 # max steps in each episode, prevent from running too long
 # MAX_STEPS = 10_000  # None
-MAX_STEPS = 100  # None
+MAX_STEPS = 1_000  # None
 
 MEMORY_CAPACITY = 10_000
 BATCH_SIZE = 100

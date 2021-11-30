@@ -15,8 +15,7 @@ class TrafficSteeringEnvironment(gym.Env):
         super(TrafficSteeringEnvironment, self).__init__()
 
         # [lightphase]
-        self.action_space = spaces.Discrete(5)
-        # self.action_space = spaces.Discrete(8)
+        self.action_space = spaces.Discrete(8)
 
         # [count_vehicle_waiting]
         self.observation_space = spaces.Box(
@@ -35,6 +34,7 @@ class TrafficSteeringEnvironment(gym.Env):
         prev_state = self.api.get_state()
 
         self.api.set_action('intersection_1_1', action)
+        # for i in range(10):
         self.api.next_frame()
 
         next_state = self.api.get_state()

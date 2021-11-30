@@ -9,7 +9,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -30,7 +30,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -51,7 +51,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -74,7 +74,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -95,7 +95,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -116,7 +116,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -138,7 +138,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -159,7 +159,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -180,7 +180,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -203,7 +203,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -224,7 +224,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [
@@ -245,7 +245,7 @@
       "usualPosAcc": 2.0,
       "usualNegAcc": 4.5,
       "minGap": 2.5,
-      "maxSpeed": 16.67,
+      "maxSpeed": 60.67,
       "headwayTime": 1.5
     },
     "route": [

@@ -28,11 +28,11 @@ echo "Run container from simulation image"
 docker run --name $docker_container_name -d simulation
 echo
 
-
+# cp -r container-output container-output-history/`date '+%Y-%m-%d-%H-%M-%S'`
+# rm -r ./container-output/*
 # echo "Copy files and paste in ./container-output"
 # docker cp -a $docker_container_name:/usr/python-code/container-output/. ./container-output
-# docker cp $docker_container_name:/usr/python-code/simulation/replay/replay.txt ./container-output
-# docker cp $docker_container_name:/usr/python-code/simulation/replay/roadnet.json ./container-output
+# docker cp -a $docker_container_name:/usr/python-code/simulation/replay/. ./container-output
 # echo
 
 

@@ -1,3 +1,4 @@
 .env
 container-output/*
+container-output-history/*
 *__pycache__

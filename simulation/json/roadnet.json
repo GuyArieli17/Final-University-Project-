@@ -1981,6 +1981,11 @@
           {
             "time": 30,
             "availableRoadLinks": [
+            ]
+          },
+          {
+            "time": 30,
+            "availableRoadLinks": [
               0,
               7
             ]

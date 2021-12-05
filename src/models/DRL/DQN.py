@@ -15,7 +15,6 @@ class DQN(Agent):
     An agent learned with DQN using replay memory and temporal difference
     - use a value network to estimate the state-action value
     """
-
     def __init__(self, env, state_dim, action_dim,
                  memory_capacity=10000, max_steps=10000,
                  reward_gamma=0.99, reward_scale=1., done_penalty=None,
@@ -56,7 +55,7 @@ class DQN(Agent):
     def train(self):
         if self.n_episodes <= self.episodes_before_train:
             pass
-
+        # get batch size of input from batch
         batch = self.memory.sample(self.batch_size)
         states_var = to_tensor_var(
             batch.states, self.use_cuda).view(-1, self.state_dim)

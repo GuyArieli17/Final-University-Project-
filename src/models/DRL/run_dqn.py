@@ -5,7 +5,7 @@ from common.utils import agg_double_list
 import os
 import sys
 import time
-# import gym
+import gym
 import numpy as np
 # import matplotlib.pyplot as plt
 
@@ -13,8 +13,8 @@ from mediator.custom_enviroment import TrafficSteeringEnvironment
 
 
 # MAX_EPISODES = 5_000
-MAX_EPISODES = 1
-EPISODES_BEFORE_TRAIN = 0
+MAX_EPISODES = 10
+EPISODES_BEFORE_TRAIN = 5
 EVAL_EPISODES = 10
 EVAL_INTERVAL = 1
 
@@ -42,10 +42,9 @@ sys.stdout.write('start\n')
 
 def run(env_class):
     env = env_class()
-    env.seed(RANDOM_SEED)
-
     env_eval = env_class()
     env_eval.seed(RANDOM_SEED)
+    env.seed(RANDOM_SEED)
 
     state_dim: int = env.observation_space.shape[0]
     if len(env.action_space.shape) >= 1:
@@ -62,13 +61,13 @@ def run(env_class):
               epsilon_decay=EPSILON_DECAY, max_grad_norm=MAX_GRAD_NORM,
               episodes_before_train=EPISODES_BEFORE_TRAIN)
 
-    episodes = []
-    eval_rewards = []
+    episodes:list = []
+    eval_rewards:list = []
 
     sys.stdout.write('start EPISODES\n')
 
     while dqn.n_episodes < MAX_EPISODES:
-        sys.stdout.write('episode: ' + str(dqn.n_episodes)+ ', n_steps: ' + str(dqn.n_steps) + '\n')
+        # sys.stdout.write('episode: ' + str(dqn.n_episodes)+ ', n_steps: ' + str(dqn.n_steps) + '\n')
         dqn.interact()
         if dqn.n_episodes >= EPISODES_BEFORE_TRAIN:
             dqn.train()
@@ -92,17 +91,9 @@ def run(env_class):
 
     sys.stdout.write('done saves\n')
 
-    # time.sleep(5000)
-
-    # plt.figure()
-    # plt.plot(episodes, eval_rewards)
-    # plt.title("%s" % env_id)
-    # plt.xlabel("Episode")
-    # plt.ylabel("Average Reward")
-    # plt.legend(["DQN"])
-    # plt.savefig("./output/%s_dqn.png" % env_id)
 
 
 if __name__ == "__main__":
     sys.stdout.write('main\n')
     run(TrafficSteeringEnvironment)
+    # run(None)

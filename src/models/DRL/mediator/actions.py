@@ -61,6 +61,7 @@ class Action:
                 'EAST' : [0,0,0], 
                 'NORTH' : [1,1,1]
             },
+
     }
     
     

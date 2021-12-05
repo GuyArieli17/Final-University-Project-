@@ -7,16 +7,19 @@ from mediator.actions import Action
 
 class Cityflow_API:
 
-    def __init__(self, config, dimension=[1, 1], n_steps=100):
-        self.eng = cityflow.Engine(config)  # city flow engine
+    def __init__(self, config:str, dimension=[1, 1], n_steps=100)->None:
+        # init and create city flow engine
+        self.eng = cityflow.Engine(config)
+        # number of max steps
+        #Todo: Why we need this
         self.n_steps = n_steps
         self.dimension = np.array(dimension)  # set the diminstion we will use
         self.number_of_state_delta = 0
 
-    def reset(self):
+    def reset(self)->None:
         self.eng.reset()
 
-    def next_frame(self):
+    def next_frame(self)->None:
         self.eng.next_step()
 
     def get_state(self) -> State:
@@ -36,11 +39,9 @@ class Cityflow_API:
             self.eng.set_vehicle_route(vehicle_id, route)  # retun T/F
             self.eng.set_vehicle_speed(vehicle_id, speed)
 
-    def set_action(self, intersection_id: str, phase_id: int) -> bool:
+    def set_action(self, intersection_id: str, phase_id: int) -> None:
         """
         phase_id - number of action which should to execute
         """
         # TODO: How to create a automaton network without changing the json
-        # intersection_id = 0
-        # phase_id
         self.eng.set_tl_phase(intersection_id, phase_id)

@@ -30,7 +30,7 @@ echo
 
 # cp -r container-output container-output-history/`date '+%Y-%m-%d-%H-%M-%S'`
 # rm -r ./container-output/*
-# echo "Copy files and paste in ./container-output"
+ echo "Copy files and paste in ./container-output"
 # docker cp -a $docker_container_name:/usr/python-code/container-output/. ./container-output
 # docker cp -a $docker_container_name:/usr/python-code/simulation/replay/. ./container-output
 # echo
@@ -40,7 +40,7 @@ echo
 # docker rm $docker_container_name
 # echo
 
-
+#
 # echo "EXIT PROGRAM PRESS KEY"
 # while [ true ] ; do
 #     read -t 3 -n 1

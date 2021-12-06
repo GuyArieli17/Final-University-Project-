@@ -1,11 +1,33 @@
 import random
 import cityflow
 import numpy as np
-from mediator.state import State
-from mediator.actions import Action
+# from mediator.state import State
+# from mediator.actions import Action
 
 
 class Cityflow_API:
+
+    def state(self) -> np.array:
+        vehicle_n: int = self.eng.get_vehicle_count()
+        # avg travel time in the network
+        vehicle_avg_travel_time: float = self.eng.get_average_travel_time()
+        # map (lane)->(number of vehicle in lane)
+        num_vehicle_in_each_lane: dict = self.eng.get_lane_vehicle_count()
+        # map (lane)->(number of waiting vehicle in lane)
+        num_waiting_vehicle_each_lane: dict = self.eng.get_lane_waiting_vehicle_count()
+        # map (lane)->(list of vehicle in lane)
+        vehicle_in_each_lane: dict = self.eng.get_lane_vehicles()
+        # define the state var
+        vehicle_sum_in_each_lane: dict = dict()
+        road_id_dict: dict = dict()
+        for lane_key, car_lst in vehicle_in_each_lane.items():
+            road_id = lane_key[:-2]
+            if road_id not in road_id_dict:
+                road_id_dict[road_id] = []
+            road_id_dict[road_id].append(len(car_lst))
+        info: np.array = np.array(list(road_id_dict.values())).ravel()
+        return info
+
 
     def __init__(self, config:str, dimension=[1, 1], n_steps=100)->None:
         # init and create city flow engine
@@ -22,9 +44,8 @@ class Cityflow_API:
     def next_frame(self)->None:
         self.eng.next_step()
 
-    def get_state(self) -> State:
-        state = State(self.eng)
-        return state.get_state()
+    def get_state(self) -> np.array:
+        return self.state()
 
     def stochastic(self):
         # TODO: implemnt random routes from randoms cars

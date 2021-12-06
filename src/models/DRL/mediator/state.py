@@ -18,7 +18,8 @@ class State:
         # map (lane)->(list of vehicle in lane)
         vehicle_in_each_lane:dict = engine.get_lane_vehicles()
         # define the state var
-        self.state = np.array([vehicle_avg_travel_time])
+        info: list  = [vehicle_in_each_lane]
+        self.state = np.array(info)
 
     def get_state(self):
         return self.state

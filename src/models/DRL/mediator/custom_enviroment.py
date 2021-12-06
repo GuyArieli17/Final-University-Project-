@@ -9,6 +9,8 @@ load_dotenv()
 COOL_DOWN_IN_STEPS = 7
 MIN_ACTION_STEPS = 3
 RED_LIGHT_ACTION = 8
+
+
 class TrafficSteeringEnvironment(gym.Env):
 
     def __init__(self)->None:

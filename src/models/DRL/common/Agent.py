@@ -83,13 +83,13 @@ class Agent(object):
         action = self.exploration_action(self.env_state)
         next_state, reward, done, _ = self.env.step(action)
 
-        sys.stdout.write(
-            'state:' + str(state) + ', \
-             next_state:' + str(next_state) + ', \
-             reward:' + str(reward) + ', \
-             action:' + str(action) + ', \
-             n_steps:' + str(self.n_steps) + ' \n'
-        )
+        # sys.stdout.write(
+        #     'state:' + str(state) + ', \
+        #      next_state:' + str(next_state) + ', \
+        #      reward:' + str(reward) + ', \
+        #      action:' + str(action) + ', \
+        #      n_steps:' + str(self.n_steps) + ' \n'
+        # )
 
         if done or ((self.max_steps is not None) and (self.n_steps >= self.max_steps)):
             if self.done_penalty is not None:

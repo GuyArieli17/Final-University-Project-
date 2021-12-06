@@ -33,6 +33,7 @@ echo
  echo "Copy files and paste in ./container-output"
 # docker cp -a $docker_container_name:/usr/python-code/container-output/. ./container-output
 # docker cp -a $docker_container_name:/usr/python-code/simulation/replay/. ./container-output
+# docker cp -a test:/usr/python-code/simulation/replay/. ./container-output
 # echo
 
 

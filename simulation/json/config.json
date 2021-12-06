@@ -7,5 +7,6 @@
     "rlTrafficLight": true,
     "saveReplay": true,
     "roadnetLogFile": "./replay/roadnet.json",
-    "replayLogFile": "./replay/replay.txt"
+    "replayLogFile": "./replay/replay.txt",
+    "laneChange": true
 }

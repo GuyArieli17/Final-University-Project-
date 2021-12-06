@@ -20,7 +20,7 @@
     "startTime": 0,
     "endTime": -1
   },
-  { 
+  {
     "_comment": "Turn left from the west road to the north road",
     "vehicle": {
       "length": 5.0,
@@ -41,7 +41,7 @@
     "startTime": 0,
     "endTime": -1
   },
-  { 
+  {
     "_comment": "Turn right from the west road to the south road",
     "vehicle": {
       "length": 5.0,
@@ -62,8 +62,6 @@
     "startTime": 0,
     "endTime": -1
   },
-
-
   {
     "_comment": "Go straight from the south road to the north road",
     "vehicle": {
@@ -127,7 +125,6 @@
     "startTime": 0,
     "endTime": -1
   },
-
   {
     "_comment":"Go straight from the east road to the west road",
     "vehicle": {
@@ -191,8 +188,6 @@
     "startTime": 0,
     "endTime": -1
   },
-
-
   {
     "_comment":"Go straight from the north road to the south road",
     "vehicle": {
@@ -256,4 +251,5 @@
     "startTime": 0,
     "endTime": -1
   }
+
 ]

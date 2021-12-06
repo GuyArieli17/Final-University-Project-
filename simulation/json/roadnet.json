@@ -1978,26 +1978,22 @@
       ],
       "trafficLight": {
         "lightphases": [
+
           {
-            "time": 30,
-            "availableRoadLinks": [
-            ]
-          },
-          {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               0,
               7
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               0, 1, 2
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               1,
               2,
@@ -2006,7 +2002,7 @@
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               6,
               7,
@@ -2014,14 +2010,14 @@
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               3,
               9
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               3,
               4,
@@ -2029,7 +2025,7 @@
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               4,
               5,
@@ -2038,11 +2034,16 @@
             ]
           },
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": [
               9,
               10,
               11
+            ]
+          },
+          {
+            "time": 10,
+            "availableRoadLinks": [
             ]
           }
         ]
@@ -2065,7 +2066,7 @@
         "roadLinkIndices": [],
         "lightphases": [
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": []
           }
         ]
@@ -2088,7 +2089,7 @@
         "roadLinkIndices": [],
         "lightphases": [
           {
-            "time": 30,
+            "time": 10,
             "availableRoadLinks": []
           }
         ]

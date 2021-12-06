@@ -99,20 +99,20 @@ class DQN(Agent):
     def exploration_action(self, state):
         epsilon = self.epsilon_end + (self.epsilon_start - self.epsilon_end) * \
             np.exp(-1. * self.n_steps / self.epsilon_decay)
-        sys.stdout.write('epsilon: ' + str(epsilon) + '\n')
+        # sys.stdout.write('epsilon: ' + str(epsilon) + '\n')
         if np.random.rand() < epsilon:
-            sys.stdout.write('exploration action \n')
+            # sys.stdout.write('exploration action \n')
             action = np.random.choice(self.action_dim)
             # action = self.env.action_space.sample()
         else:
-            sys.stdout.write('exploitation action \n')
+            # sys.stdout.write('exploitation action \n')
             action = self.action(state)
 
         return action
 
     # choose an action based on state for execution
     def action(self, state):
-        state_var = to_tensor_var([state], self.use_cuda)
+        state_var = to_tensor_var([state], self.use_cuda).T
         state_action_value_var = self.actor(state_var)
         if self.use_cuda:
             state_action_value = state_action_value_var.data.cpu().numpy()[0]

@@ -1,5 +1,5 @@
 [
-  { 
+  {
     "_comment": "Go straight from the west road to the east road",
     "vehicle": {
       "length": 5.0,
@@ -18,7 +18,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment": "Turn left from the west road to the north road",
@@ -39,7 +39,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment": "Turn right from the west road to the south road",
@@ -60,7 +60,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment": "Go straight from the south road to the north road",
@@ -81,7 +81,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Turn left from the south road to the west road",
@@ -102,7 +102,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Turn right from the south road to the east road",
@@ -123,7 +123,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Go straight from the east road to the west road",
@@ -144,7 +144,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Turn left from the east road to the south road",
@@ -165,7 +165,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Turn right from the east road to the north road",
@@ -186,7 +186,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Go straight from the north road to the south road",
@@ -207,7 +207,7 @@
     ],
     "interval": 2.0,
     "startTime": 0,
-    "endTime": -1
+    "endTime": 5
   },
   {
     "_comment":"Turn left from the north road to the east road",

@@ -12,7 +12,7 @@ from common.utils import to_tensor_var
 
 class DDPG(Agent):
     """
-    An agent learned with Deep Deterministic Policy Gradient using Actor-Critic framework
+    An agents learned with Deep Deterministic Policy Gradient using Actor-Critic framework
     - Actor takes state as input
     - Critic takes both state and action as input
     - Critic uses gradient temporal-difference learning
@@ -61,7 +61,7 @@ class DDPG(Agent):
             self.actor_target.cuda()
             self.critic_target.cuda()
 
-    # agent interact with the environment to collect experience
+    # agents interact with the environment to collect experience
     def interact(self):
         super(DDPG, self)._take_one_step()
 

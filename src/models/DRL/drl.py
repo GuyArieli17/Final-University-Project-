@@ -1,4 +1,4 @@
-#TODO: build drl model
+#TODO: build x models
 
 class DRL:
     def __init__(self)->None:

@@ -12,15 +12,15 @@ from common.utils import entropy, index_to_one_hot, to_tensor_var
 
 class MAA2C(Agent):
     """
-    An multi-agent learned with Advantage Actor-Critic
+    An multi-agents learned with Advantage Actor-Critic
     - Actor takes its local observations as input
-    - agent interact with environment to collect experience
-    - agent training with experience to update policy
+    - agents interact with environment to collect experience
+    - agents training with experience to update policy
 
     Parameters
     - training_strategy:
         - cocurrent
-            - each agent learns its own individual policy which is independent
+            - each agents learns its own individual policy which is independent
             - multiple policies are optimized simultaneously
         - centralized (see MADDPG in [1] for details)
             - centralized training and decentralized execution
@@ -43,7 +43,7 @@ class MAA2C(Agent):
     Reference:
     [1] Multi-Agent Actor-Critic for Mixed Cooperative-Competitive Environments
     [2] Cooperative Multi-Agent Control Using Deep Reinforcement Learning
-    [3] Parameter Sharing Deep Deterministic Policy Gradient for Cooperative Multi-agent Reinforcement Learning
+    [3] Parameter Sharing Deep Deterministic Policy Gradient for Cooperative Multi-agents Reinforcement Learning
 
     """
     def __init__(self, env, n_agents, state_dim, action_dim,
@@ -107,7 +107,7 @@ class MAA2C(Agent):
             for c in self.critics:
                 c.cuda()
 
-    # agent interact with the environment to collect experience
+    # agents interact with the environment to collect experience
     def interact(self):
         if (self.max_steps is not None) and (self.n_steps >= self.max_steps):
             self.env_state = self.env.reset()

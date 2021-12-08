@@ -1,7 +1,7 @@
 # import os
 # from dotenv import load_dotenv
 #
-# from src.models.DRL.mediator.API import Cityflow_API
+# from src.models.x.mediator.API import Cityflow_API
 #
 # f = open('states.txt', 'w')
 #
@@ -11,7 +11,7 @@
 # # crate city flow instance
 # api = Cityflow_API(os.getenv("CONFIG_JSON_FILE"))
 #
-# # run the simulation and contralling eatch state
+# # run the simulation_config and contralling eatch state
 # for i in range(100):
 #     # print(api.get_state())
 #     f.write(api.get_state().__str__()+'\n')

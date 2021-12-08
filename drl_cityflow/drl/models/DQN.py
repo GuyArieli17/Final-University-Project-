@@ -1,13 +1,11 @@
-
+from ..utils import identity, to_tensor_var
+from ..network.actor_network import ActorNetwork
+from torch.optim import Adam, RMSprop
+from ..agents.abstract_agent import Agent
 import torch as th
 from torch import nn
-from torch.optim import Adam, RMSprop
 import sys
 import numpy as np
-
-from common.Agent import Agent
-from common.Model import ActorNetwork
-from common.utils import identity, to_tensor_var
 
 
 class DQN(Agent):
@@ -80,13 +78,6 @@ class DQN(Agent):
         next_state_action_values = self.actor(next_states_var).detach()
         next_q = th.max(next_state_action_values, 1)[0].view(-1, 1)
         # compute target q by: r + gamma * max_a { V(s_{t+1}) }
-        print("______________________________")
-        print((self.reward_scale * rewards_var).shape)
-        print(self.reward_gamma)
-        print((next_q).shape)
-        print((1.-dones_var).shape)
-        print("______________________________")
-
         target_q = self.reward_scale * rewards_var + \
             self.reward_gamma * next_q * (1. - dones_var)
 
@@ -104,6 +95,7 @@ class DQN(Agent):
 
     # choose an action based on state with random noise added for exploration in training
     def exploration_action(self, state):
+        print("IN HERE")
         epsilon = self.epsilon_end + (self.epsilon_start - self.epsilon_end) * \
             np.exp(-1. * self.n_steps / self.epsilon_decay)
         # sys.stdout.write('epsilon: ' + str(epsilon) + '\n')
@@ -119,7 +111,7 @@ class DQN(Agent):
 
     # choose an action based on state for execution
     def action(self, state):
-        state_var = to_tensor_var(state, self.use_cuda)
+        state_var = to_tensor_var([state], self.use_cuda)
         state_action_value_var = self.actor(state_var)
         if self.use_cuda:
             state_action_value = state_action_value_var.data.cpu().numpy()[0]

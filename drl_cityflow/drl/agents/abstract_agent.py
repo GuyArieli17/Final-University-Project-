@@ -1,7 +1,6 @@
+from ..memory.replay_memory import ReplayMemory
+from ..utils import identity
 from abc import abstractmethod
-
-from common.Memory import ReplayMemory
-from common.utils import identity
 import torch as th
 import numpy as np
 import gym
@@ -157,19 +156,19 @@ class Agent(object):
 
     # train on a sample batch
     def train(self):
-        pass
+        NotImplementedError("Sub Class Have To Implement This Method")
 
     # choose an action based on state with random noise added for exploration in training
     def exploration_action(self, state):
-        pass
+        NotImplementedError("Sub Class Have To Implement This Method")
 
     # choose an action based on state for execution
     def action(self, state):
-        pass
+        NotImplementedError("Sub Class Have To Implement This Method")
 
     # evaluate value for a state-action pair
     def value(self, state, action):
-        pass
+        NotImplementedError("Sub Class Have To Implement This Method")
 
     # evaluation the learned agents
     def evaluation(self, env, eval_episodes=10):

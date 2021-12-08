@@ -3,7 +3,7 @@ import gym
 from gym import spaces
 import numpy as np
 from dotenv import load_dotenv
-from mediator.API import CityFlowAPI
+from simulation.api import CityFlowAPI
 
 load_dotenv()
 COOL_DOWN_IN_STEPS = 7
@@ -12,8 +12,9 @@ RED_LIGHT_ACTION = 8
 
 
 class TrafficSteeringEnvironment(gym.Env):
+    """This"""
 
-    def __init__(self)->None:
+    def __init__(self) -> None:
         super(TrafficSteeringEnvironment, self).__init__()
         # [lightphase]
         self.action_space = spaces.Discrete(8)
@@ -22,9 +23,8 @@ class TrafficSteeringEnvironment(gym.Env):
         # [reward]
         self.reward_range = (-np.inf, np.inf)
         # taking api
-        self.api = CityFlowAPI(os.getenv("CONFIG_JSON_FILE"))
+        self.api = CityFlowAPI('./simulation/config/config.json')
         self.prev_action = None
-
 
     def reset(self):
         """

@@ -1,15 +1,11 @@
-
-from DQN import DQN
-from common.utils import agg_double_list
-
-import os
+from simulation.environment import TrafficSteeringEnvironment
+from drl.models.DQN import DQN
+from drl.utils import agg_double_list
+import numpy as np
 import sys
 import time
 import gym
-import numpy as np
-# import matplotlib.pyplot as plt
-
-from mediator.custom_enviroment import TrafficSteeringEnvironment
+import os
 
 
 MAX_EPISODES = 10

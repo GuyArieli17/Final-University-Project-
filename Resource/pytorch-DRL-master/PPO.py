@@ -13,11 +13,11 @@ from common.utils import index_to_one_hot, to_tensor_var
 
 class PPO(Agent):
     """
-    An agent learned with PPO using Advantage Actor-Critic framework
+    An agents learned with PPO using Advantage Actor-Critic framework
     - Actor takes state as input
     - Critic takes both state and action as input
-    - agent interact with environment to collect experience
-    - agent training with experience to update policy
+    - agents interact with environment to collect experience
+    - agents training with experience to update policy
     - adam seems better than rmsprop for ppo
     """
     def __init__(self, env, state_dim, action_dim,
@@ -68,7 +68,7 @@ class PPO(Agent):
             self.actor_target.cuda()
             self.critic_target.cuda()
 
-    # agent interact with the environment to collect experience
+    # agents interact with the environment to collect experience
     def interact(self):
         super(PPO, self)._take_n_steps()
 

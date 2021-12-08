@@ -12,11 +12,11 @@ from common.utils import entropy, index_to_one_hot, to_tensor_var
 
 class A2C(Agent):
     """
-    An agent learned with Advantage Actor-Critic
+    An agents learned with Advantage Actor-Critic
     - Actor takes state as input
     - Critic takes both state and action as input
-    - agent interact with environment to collect experience
-    - agent training with experience to update policy
+    - agents interact with environment to collect experience
+    - agents training with experience to update policy
     """
     def __init__(self, env, state_dim, action_dim,
                  memory_capacity=10000, max_steps=None,
@@ -55,7 +55,7 @@ class A2C(Agent):
         if self.use_cuda:
             self.actor.cuda()
 
-    # agent interact with the environment to collect experience
+    # agents interact with the environment to collect experience
     def interact(self):
         super(A2C, self)._take_n_steps()
 

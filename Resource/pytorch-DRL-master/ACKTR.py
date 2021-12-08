@@ -12,7 +12,7 @@ from common.utils import index_to_one_hot, entropy, to_tensor_var
 
 class DisjointACKTR(A2C):
     """
-    An agent learned with ACKTR
+    An agents learned with ACKTR
     Using disjoint actor and critic results in instability in training.
     """
     def __init__(self, env, state_dim, action_dim,
@@ -102,7 +102,7 @@ class DisjointACKTR(A2C):
 
 class JointACKTR(A2C):
     """
-    An agent learned with ACKTR
+    An agents learned with ACKTR
     Compared with DisjointACKTR, JointACKTR is more stable.
     """
     def __init__(self, env, state_dim, action_dim,

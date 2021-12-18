@@ -22,4 +22,4 @@ COPY . .
 
 # run the main function to create replay
 # RUN python src/main.py
-CMD ["python", "-u", "run_dqn.py" ]
+CMD ["python", "-u", "main.py" ]

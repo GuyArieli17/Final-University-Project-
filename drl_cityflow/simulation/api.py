@@ -61,23 +61,18 @@ class CityFlowAPI:
         self.dimension = np.array(dimension)  # set the dim we will use
         self.number_of_state_delta = 0
 
-    def state(self) -> np.array:
-        vehicle_num: int = self.eng.get_vehicle_count()
+    def state(self) -> dict:
+        rtn_state = dict()
+        rtn_state['vehicle_count'] = self.eng.get_vehicle_count()
         # avg travel time in the network
-        vehicle_avg_travel_time: float = self.eng.get_average_travel_time()
+        rtn_state['average_travel_time'] = self.eng.get_average_travel_time()
         # map (lane)->(number of vehicle in lane)
-        num_vehicle_in_each_lane: dict = self.eng.get_lane_vehicle_count()
+        rtn_state['lane_vehicle_count'] = self.eng.get_lane_vehicle_count()
         # map (lane)->(number of waiting vehicle in lane)
-        lane_waiting_car_count: dict = self.eng.get_lane_waiting_vehicle_count()
+        rtn_state['lane_waiting_vehicle_count'] = self.eng.get_lane_waiting_vehicle_count()
         # map (lane)->(list of vehicle in lane)
-        vehicle_in_each_lane: dict = self.eng.get_lane_vehicles()
-        # map (lane)->(list of vehicle in lane)
-        vehicle_waiting_in_each_lane: dict = self.eng.get_lane_waiting_vehicle_count()
-        # get all running vehicle in each road
-        # driving_cars_by_lane: dict = Helper.get_dict_of_running_cars_by_lane(
-        #                                             vehicle_in_each_lane, vehicle_waiting_in_each_lane)
-        # distance_to_each_lane: dict = Helper.get_lane_waiting_distance_by_lane(lane_waiting_car_count)
-        return np.array([sum(list(lane_waiting_car_count.values()))])
+        rtn_state['lane_vehicles'] = self.eng.get_lane_vehicles()
+        return rtn_state
 
     def reset(self) -> None:
         self.eng.reset()

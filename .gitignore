@@ -2,3 +2,8 @@
 container-output/*
 container-output-history/*
 *__pycache__
+zsx/*
+src/*
+simulation/*
+run.sh
+Dockerfile

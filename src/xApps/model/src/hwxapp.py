@@ -28,23 +28,15 @@ from mdclogpy import Logger
 
 import torch as th
 from torch import nn
+from pathlib import Path
+import os, sys
 
-class ActorNetwork(nn.Module):
-    """
-    A network for actor
-    """
-    def __init__(self, state_dim, hidden_size, output_size, output_act):
-        super(ActorNetwork, self).__init__()
-        self.fc1 = nn.Linear(state_dim, hidden_size)
-        self.fc2 = nn.Linear(hidden_size, hidden_size)
-        self.fc3 = nn.Linear(hidden_size, output_size)
-        self.output_act = output_act
-
-    def forward(self, state):
-        out = nn.functional.relu(self.fc1(state))
-        out = nn.functional.relu(self.fc2(out))
-        out = self.output_act(self.fc3(out))
-        return out
+currentdir = os.path.dirname(os.path.realpath(__file__))
+while currentdir.endswith('Final-University-Project\src') == False:
+    currentdir = os.path.dirname(currentdir)
+    sys.path.append(currentdir)
+    
+from drl_cityflow.simple.models import ActorNetwork
 
 
 ACTION_DIM = 8
@@ -53,8 +45,12 @@ HIDDEN_LAYER = 50
 
 def init__dqn_model():
     model = ActorNetwork(STATE_DIM, HIDDEN_LAYER, ACTION_DIM, nn.ReLU())
-    model.load_state_dict(th.load('model.pth'))
-    optimizer = th.optim.Adam(self._model.parameters())
+    model_file_name = 'model_params.pth'
+    # model_file_name = 'model.pth'
+    model_file_path = Path(__file__).with_name(model_file_name)
+    model.load_state_dict(th.load(model_file_path))
+    # model = th.load(model__file_path)
+    optimizer = th.optim.Adam(model.parameters())
     
     return model, optimizer
 

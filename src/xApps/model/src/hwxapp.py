@@ -31,23 +31,53 @@ from torch import nn
 from pathlib import Path
 import os, sys
 
-currentdir = os.path.dirname(os.path.realpath(__file__))
-while currentdir.endswith('Final-University-Project\src') == False:
-    currentdir = os.path.dirname(currentdir)
-    sys.path.append(currentdir)
-    
-from drl_cityflow.simple.models import ActorNetwork
+# currentdir = os.path.dirname(os.path.realpath(__file__))
+# # while currentdir.endswith('Final-University-Project\src') == False:
+# #     currentdir = os.path.dirname(currentdir)
+# #     sys.path.append(currentdir)
+# print(currentdir)
+# currentdir = os.path.dirname(currentdir)
+# sys.path.append(currentdir)
 
+# currentdir = os.path.dirname(currentdir)
+# print(currentdir)
+# sys.path.append(currentdir)
+
+# currentdir = os.path.dirname(currentdir)
+# print(currentdir)
+# sys.path.append(currentdir)
+
+# from drl_cityflow.simple.models import ActorNetwork
+
+class ActorNetwork(nn.Module):
+    """
+    A network for actor
+    """
+    def __init__(self, state_dim, hidden_size, output_size, output_act):
+        super(ActorNetwork, self).__init__()
+        self.fc1 = nn.Linear(state_dim, hidden_size)
+        self.fc2 = nn.Linear(hidden_size, hidden_size)
+        self.fc3 = nn.Linear(hidden_size, output_size)
+        self.output_act = output_act
+
+    def forward(self, state):
+        out = nn.functional.relu(self.fc1(state))
+        out = nn.functional.relu(self.fc2(out))
+        out = self.output_act(self.fc3(out))
+        return out
 
 ACTION_DIM = 8
 STATE_DIM = 24
 HIDDEN_LAYER = 50
 
+default_model_file = "/opt/model/model_params.pth"
+
 def init__dqn_model():
     model = ActorNetwork(STATE_DIM, HIDDEN_LAYER, ACTION_DIM, nn.ReLU())
-    model_file_name = 'model_params.pth'
+    # model_file_name = 'model_params.pth'
     # model_file_name = 'model.pth'
-    model_file_path = Path(__file__).with_name(model_file_name)
+    # model_file_path = Path(__file__).with_name(model_file_name)
+    model_file_path = default_model_file
     model.load_state_dict(th.load(model_file_path))
     # model = th.load(model__file_path)
     optimizer = th.optim.Adam(model.parameters())
@@ -66,15 +96,15 @@ class HWXapp:
                                  
         self._model, self._optimizer = init__dqn_model()
         
-        # Print model's state_dict
-        print("Model's state_dict:")
-        for param_tensor in self._model.state_dict():
-            print(param_tensor, "\t", self._model.state_dict()[param_tensor].size())
+        # # Print model's state_dict
+        # print("Model's state_dict:")
+        # for param_tensor in self._model.state_dict():
+        #     print(param_tensor, "\t", self._model.state_dict()[param_tensor].size())
         
-        # Print optimizer's state_dict
-        print("Optimizer's state_dict:")
-        for var_name in self._optimizer.state_dict():
-            print(var_name, "\t", self._optimizer.state_dict()[var_name])
+        # # Print optimizer's state_dict
+        # print("Optimizer's state_dict:")
+        # for var_name in self._optimizer.state_dict():
+        #     print(var_name, "\t", self._optimizer.state_dict()[var_name])
         
 
     def _post_init(self, rmr_xapp):

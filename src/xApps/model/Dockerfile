@@ -41,13 +41,14 @@ COPY setup.py /tmp
 COPY README.md /tmp
 COPY LICENSE.txt /tmp/
 COPY src/ /tmp/src
+COPY src/model_params.pth /opt/model/model_params.pth
 COPY init/ /tmp/init
 
 RUN pip install /tmp
 
 RUN pip3 install numpy
-RUN pip3 install torch==1.10.1 -f https://download.pytorch.org/whl/cpu/torch_lts.html
-# RUN pip3 install torch==1.10.1 -f https://download.pytorch.org/whl/torch_lts.html
+# RUN pip3 install torch==1.10.1 -f https://download.pytorch.org/whl/cpu/torch_lts.html
+RUN pip3 install torch==1.10.1 -f https://download.pytorch.org/whl/torch_lts.html
 
 # Env - TODO- Configmap
 ENV PYTHONUNBUFFERED 1

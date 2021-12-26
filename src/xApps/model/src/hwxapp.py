@@ -147,7 +147,7 @@ class HWXapp:
         Function that creates all the handlers for RMR Messages
         """
         HealthCheckHandler(self._rmr_xapp, Constants.RIC_HEALTH_CHECK_REQ)
-        A1PolicyHandler(self._rmr_xapp, Constants.A1_POLICY_REQ)
+        # A1PolicyHandler(self._rmr_xapp, Constants.A1_POLICY_REQ)
         SubscriptionHandler(self._rmr_xapp,Constants.SUBSCRIPTION_REQ)
 
     def start(self, thread=False):

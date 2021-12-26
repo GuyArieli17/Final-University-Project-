@@ -43,19 +43,19 @@ class HWXapp:
         """
         rmr_xapp.logger.info("HWXapp.post_init :: post_init called")
         # self.sdl_alarm_mgr = SdlAlarmManager()
-        sdl_mgr = SdlManager(rmr_xapp)
-        sdl_mgr.sdlGetGnbList()
-        a1_mgr = A1PolicyManager(rmr_xapp)
-        a1_mgr.startup()
-        sub_mgr = SubscriptionManager(rmr_xapp)
-        enb_list = sub_mgr.get_enb_list()
-        for enb in enb_list:
-            sub_mgr.send_subscription_request(enb)
-        gnb_list = sub_mgr.get_gnb_list()
-        for gnb in gnb_list:
-            sub_mgr.send_subscription_request(gnb)
-        metric_mgr = MetricManager(rmr_xapp)
-        metric_mgr.send_metric()
+        # sdl_mgr = SdlManager(rmr_xapp)
+        # sdl_mgr.sdlGetGnbList()
+        # a1_mgr = A1PolicyManager(rmr_xapp)
+        # a1_mgr.startup()
+        # sub_mgr = SubscriptionManager(rmr_xapp)
+        # enb_list = sub_mgr.get_enb_list()
+        # for enb in enb_list:
+        #     sub_mgr.send_subscription_request(enb)
+        # gnb_list = sub_mgr.get_gnb_list()
+        # for gnb in gnb_list:
+        #     sub_mgr.send_subscription_request(gnb)
+        # metric_mgr = MetricManager(rmr_xapp)
+        # metric_mgr.send_metric()
 
     def _handle_config_change(self, rmr_xapp, config):
         """

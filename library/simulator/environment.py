@@ -1,15 +1,13 @@
-import os
+# ---------------- IMPROTS ----------------
 import gym
 from gym import spaces
 import numpy as np
-from dotenv import load_dotenv
-from simulation.api import CityFlowAPI
-
-load_dotenv()
+from api import CityFlowAPI
+# ---------------- HYPER PARAMATERS ----------------
 COOL_DOWN_IN_STEPS = 7
 MIN_ACTION_STEPS = 3
 RED_LIGHT_ACTION = 8
-
+# ---------------- API ----------------
 class TrafficSteeringEnvironment(gym.Env):
     """This"""
 
@@ -54,3 +52,8 @@ class TrafficSteeringEnvironment(gym.Env):
         self.prev_action = action
         done = False
         return next_state, reward, done, []
+
+
+if __name__ == "__main__":
+    print("Hello world")
+    print("Added to change commited")

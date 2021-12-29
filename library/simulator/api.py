@@ -2,12 +2,10 @@
 import random
 import cityflow
 import numpy as np
-
 # ---------------- HYPER PARAMATERS ----------------
 VEHICLE_LENGTH = 5.0
 ROAD_LENGTH = 300.0
 VEHICLE_MIN_GAP = 2.5
-
 # ---------------- API ----------------
 class CityFlowAPI:
 
@@ -65,8 +63,3 @@ class CityFlowAPI:
         """
         # TODO: How to create a automaton network without changing the json
         self.eng.set_tl_phase(intersection_id, phase_id)
-
-
-if __name__ == "__main__":
-    print("Hello world")
-    print("Added to change commited")

@@ -11,9 +11,10 @@ ENV RMR_SEED_RT /opt/route/test_route.rt
 
 # sdl needs gcc
 RUN apk update && apk add gcc musl-dev bash
+
 # Install.
 RUN pip3 install ricxappframe==1.3.0
-COPY ping_xapp.py .
+COPY simulator/ping_xapp.py .
 
 # Run
 ENV PYTHONUNBUFFERED 1

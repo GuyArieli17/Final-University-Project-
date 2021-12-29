@@ -13,7 +13,9 @@ RUN apk update && apk add gcc musl-dev bash
 
 # Install
 RUN pip3 install ricxappframe==1.3.0
-COPY pong_xapp.py .
+
+#copy the file itself
+COPY machine-learning/pong_xapp.py .
 
 # Run
 ENV PYTHONUNBUFFERED 1

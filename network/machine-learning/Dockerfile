@@ -4,7 +4,7 @@ FROM python:3.8-alpine
 COPY --from=nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-alpine3-rmr:4.0.5 /usr/local/lib64/librmr* /usr/local/lib64/
 # RMR setup
 RUN mkdir -p /opt/route/
-COPY test_route.rt /opt/route/test_route.rt
+COPY network/test_route.rt /opt/route/test_route.rt
 ENV LD_LIBRARY_PATH /usr/local/lib/:/usr/local/lib64
 ENV RMR_SEED_RT /opt/route/test_route.rt
 
@@ -15,7 +15,7 @@ RUN apk update && apk add gcc musl-dev bash
 RUN pip3 install ricxappframe==1.3.0
 
 #copy the file itself
-COPY machine-learning/pong_xapp.py .
+COPY network/machine-learning/pong_xapp.py .
 
 # Run
 ENV PYTHONUNBUFFERED 1

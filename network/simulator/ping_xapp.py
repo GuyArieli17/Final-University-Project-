@@ -1,12 +1,48 @@
 import time
 import json
 from ricxappframe.xapp_frame import Xapp
+from simulator.main import TrafficSteeringEnvironment
+# from gym import spaces
+# import numpy as np
 
+# # TEST 
+# RANDOM_SEED = 2017
+# ACTION_DIM = 8
+# STATE_DIM = 24
+# ACTION_SPACE = spaces.Box(
+#     low=np.array([0]),  # Lower bound
+#     high=np.array([8]),  # Upper bound
+#     dtype=np.int64)
+# REWARD_RANGE = (-np.inf, np.inf)
+# OBSERVATION_SPACE = spaces.Box(
+#     low=np.array([-np.inf for _ in range(STATE_DIM)]),  # Lower bound
+#     high=np.array([np.inf for _ in range(STATE_DIM)]),  # Upper bound
+#     dtype=np.int64)
+# PATH = './config/config.json'
+# def reward_of_waiting_cars(prev_state: np.array, current_state: np.array) -> float:
+#     x = float(np.sum(prev_state-current_state))
+#     return x
+
+# def state_of_waiting_cars(state: dict) -> np.array:
+#     lane_waiting_car_count: dict = state['lane_waiting_vehicle_count']
+#     x = np.array([list(lane_waiting_car_count.values())], dtype=np.float)
+#     return x
 
 def entry(self):
     my_ns = "myxapp"
+
+    # env = TrafficSteeringEnvironment(
+    #     state_of_waiting_cars,
+    #     reward_of_waiting_cars,
+    #     ACTION_SPACE,
+    #     OBSERVATION_SPACE,
+    #     REWARD_RANGE,
+    #     PATH,
+    # )
+
     number = 0
     while True:
+        # env.step(0)
         # test healthcheck
         print("ping is healthy? {}".format(xapp.healthcheck()))
 

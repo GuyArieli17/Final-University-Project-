@@ -20,6 +20,7 @@ RUN ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
 RUN pip3 install ricxappframe==1.3.0
 RUN pip3 install gym
 RUN pip3 install CityFlow/
+RUN pip3 install simulation/
 
 COPY network/simulator/ping_xapp.py .
 

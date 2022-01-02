@@ -1,6 +1,6 @@
 from gym import spaces
 import numpy as np
-from simulation import TrafficSteeringEnvironment
+from simulation import Environment
 # if not install in current lib write : 
 #      - cd ../../library/simulator-moudle
 #      - pip install .

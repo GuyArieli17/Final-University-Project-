@@ -96,8 +96,8 @@ class Environment(gym.Env):
                 the last state before the reset
             ----------
         """
-        self.api.reset()
-        last_state = self.state_func(self.api.get_state())
+        self._api.reset()
+        last_state = self._state_func(self._api.state())
         return last_state
 
     # private function: will frezee all state untill let the simulator get action from user
@@ -122,10 +122,10 @@ class Environment(gym.Env):
             ----------
         """
         # set all red action in simulation
-        self.api.set_action(intersection_id, self._RED_LIGHT_ACTION)
+        self._api.set_action(intersection_id, self._RED_LIGHT_ACTION)
         # wait _COOL_DOWN_IN_STEPS frame untill continue
         for _ in range( self._COOL_DOWN_IN_STEPS):
-            self.api.next_frame()
+            self._api.next_frame()
     
     # determine an action in simulation and activate it (next frame)
     def step(self, action: int):
@@ -145,19 +145,19 @@ class Environment(gym.Env):
             ----------
         """
         # in change in lightphase cooldown should be set
-        if self.prev_action != action:
+        if self._prev_action != action:
             self._after_action_cool_down()
 
         # get the state before action
-        prev_state = self.state_func(self.api.get_state())
+        prev_state = self._state_func(self._api.state())
         # activate the action
-        self.api.set_action('intersection_1_1', action)
-        self.api.next_frame()
+        self._api.set_action('intersection_1_1', action)
+        self._api.next_frame()
         # get the new state
-        next_state = self.state_func(self.api.get_state())
-        reward = self.reward_func(prev_state, next_state)
+        next_state = self._state_func(self._api.state())
+        reward = self._reward_func(prev_state, next_state)
         # save the last preforme action
-        self.prev_action = action
+        self._prev_action = action
         # didnt finish 
         done = False
         return next_state, reward, done, []

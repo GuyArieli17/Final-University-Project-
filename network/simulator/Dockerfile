@@ -22,7 +22,7 @@ RUN pip3 install gym
 RUN pip3 install CityFlow/
 RUN pip3 install simulation/
 
-COPY network/simulator/ping_xapp.py .
+COPY network/simulator/ .
 
 # Run
 ENV PYTHONUNBUFFERED 1

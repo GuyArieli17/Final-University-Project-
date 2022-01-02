@@ -32,7 +32,7 @@ def state_of_waiting_cars(state):
 
 # Todo: add read me file with ecample + test file
 if __name__ == "__main__":
-    x = TrafficSteeringEnvironment(
+    x = Environment(
         state_of_waiting_cars,
         reward_of_waiting_cars,
         ACTION_SPACE,
@@ -40,4 +40,5 @@ if __name__ == "__main__":
         REWARD_RANGE,
         PATH,
     )
+    x.step(0)
     print("FINISH TEST")

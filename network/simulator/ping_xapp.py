@@ -1,7 +1,7 @@
 import time
 import json
 from ricxappframe.xapp_frame import Xapp
-import simulation
+from simulation import Environment
 from gym import spaces
 import numpy as np
 
@@ -31,18 +31,18 @@ def state_of_waiting_cars(state: dict) -> np.array:
 def entry(self):
     my_ns = "myxapp"
 
-    # env = TrafficSteeringEnvironment(
-    #     state_of_waiting_cars,
-    #     reward_of_waiting_cars,
-    #     ACTION_SPACE,
-    #     OBSERVATION_SPACE,
-    #     REWARD_RANGE,
-    #     PATH,
-    # )
+    env = Environment(
+        state_of_waiting_cars,
+        reward_of_waiting_cars,
+        ACTION_SPACE,
+        OBSERVATION_SPACE,
+        REWARD_RANGE,
+        PATH,
+    )
 
     number = 0
     while True:
-        # env.step(0)
+        env.step(0)
         # test healthcheck
         print("ping is healthy? {}".format(xapp.healthcheck()))
 

@@ -10,5 +10,5 @@ setup(name='simulation',
       author='GuyArieli17',
       author_email='private',
       url='http://www.google.com',
-      packages=['src'],
+      packages=['simulation'],
       )

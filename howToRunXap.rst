@@ -1,0 +1,1 @@
+docker build -t simulator:latest -f network/simulator/Dockerfile .

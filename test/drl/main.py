@@ -14,5 +14,4 @@ actor_network = ActorNetwork(STATE_DIM,HIDDEN_LAYER, ACTION_DIM, nn.ReLU())
 # model = DQN()
 # Todo: add read me file with ecample + test file
 if __name__ == "__main__":
-    actor_network()
     print("FINISH TEST")

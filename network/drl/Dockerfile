@@ -24,4 +24,4 @@ COPY network/drl/ .
 
 # Run
 ENV PYTHONUNBUFFERED 1
-CMD python pong_xapp.py
+CMD python drl_xapp.py

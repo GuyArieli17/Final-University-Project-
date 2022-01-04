@@ -1,8 +1,8 @@
 # how to build Guy
-docker build -t pong:guy -f network/drl/Dockerfile .
+docker build -t drl:guy -f network/drl/Dockerfile .
 docker build -t simulation:guy -f network/simulator/Dockerfile .
 # Let's run From Guy
-docker run -i --net=host pong:guy
+docker run -i --net=host drl:guy
 docker run -i --net=host simulation:guy
 
 # how to build Vlad

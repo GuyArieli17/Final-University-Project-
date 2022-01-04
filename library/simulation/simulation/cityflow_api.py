@@ -11,11 +11,13 @@
 import cityflow
 import numpy as np
 
-"""
+
+class CityFlowAPI:
+
+    """
     This class is abstraction of CityFlowAPI: https://cityflow.readthedocs.io/en/latest/start.html#data-access-api
     It's easy to maintain and change withput a need to update the rest of the code
-"""
-class CityFlowAPI:
+    """
 
     ###############
     # PRIVATE API #

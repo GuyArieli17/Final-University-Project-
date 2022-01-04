@@ -13,7 +13,7 @@ import torch as th
 import numpy as np
 
 # ________________ Actor ________________
-class Actor:
+class _Actor:
     """
         Abstract class that create an actor, 
         with memory type and env 
@@ -28,7 +28,7 @@ class Actor:
                  action_dim, epsilon_decay, loss_fnc, actor_optimizer, gamma,max_steps,done_penalty,batch_size):
         """
             Init funation
-            @Params
+            Params
             --------
             memory_size: 
                 the size of memory(fixed size)
@@ -156,7 +156,7 @@ class Actor:
         NotImplementedError("Need to Implement In Sub Class")
 
 # ________________ DQN ________________
-class DQN(Actor):
+class DQN(_Actor):
 
     """
         Deep Q-Network, approximates a state-value function in a Q-Learning framework with a neural network.

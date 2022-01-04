@@ -13,12 +13,14 @@ from gym import spaces
 import numpy as np
 from .cityflow_api import CityFlowAPI
 
-"""
-    This class Environment,
-    The env present all the action we can do.
-    according to gym.ENV API DOC: https://gym.openai.com/docs/
-"""
+
 class Environment(gym.Env):
+
+    """
+        This class Environment,
+        The env present all the action we can do.
+        according to gym.ENV API DOC: https://gym.openai.com/docs/
+    """
 
     ###############
     # PRIVATE API #

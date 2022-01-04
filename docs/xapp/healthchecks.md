@@ -1,7 +1,7 @@
 # Healthchecks
 
 When an RMR healthcheck message arrives, this handler checks that the RMR thread is healthy (if reccive message its healthy).
-Healthcheck message can be overwride by by registering a new callback for the healthcheck message type.
+Healthcheck message can be overwride by registering a new callback for the healthcheck message type.
 
 ----
 

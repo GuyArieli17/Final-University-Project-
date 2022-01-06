@@ -16,7 +16,7 @@ RUN ln -s /usr/lib/x86_64-linux-musl/libc.so /lib/libc.musl-x86_64.so.1
 RUN pip3 install --upgrade pip
 
 # Install
-RUN pip3 install ricxappframe==1.3.0
+RUN pip3 install ricxappframe==2.3.0
 RUN pip3 install numpy
 RUN pip3 install torch==1.10.1 -f https://download.pytorch.org/whl/torch_lts.html
 RUN pip3 install drl/

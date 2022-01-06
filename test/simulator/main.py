@@ -1,6 +1,7 @@
 from gym import spaces
 import numpy as np
 from simulation import Environment
+from functions import StateFunctions,RewardFunctions
 # if not install in current lib write : 
 #      - cd ../../library/simulator-moudle
 #      - pip install .
@@ -21,24 +22,23 @@ OBSERVATION_SPACE = spaces.Box(
     dtype=np.int64)
 PATH = './config/config.json'
 
-def reward_of_waiting_cars(prev_state, current_state):
-    x = float(np.sum(prev_state-current_state))
-    return x
-
-def state_of_waiting_cars(state):
-    lane_waiting_car_count = state['lane_waiting_vehicle_count']
-    x = np.array([list(lane_waiting_car_count.values())], dtype=np.float)
-    return x
-
 # Todo: add read me file with ecample + test file
 if __name__ == "__main__":
-    x = Environment(
-        state_of_waiting_cars,
-        reward_of_waiting_cars,
+    env = Environment(
+        StateFunctions.car_speed,
+        RewardFunctions.car_speed,
         ACTION_SPACE,
         OBSERVATION_SPACE,
         REWARD_RANGE,
         PATH,
     )
-    x.step(0)
-    print("FINISH TEST")
+    for x in range(1_500):
+        next_state, reward, done, _ = env.step(0)
+        print(f"____________________________ Step: {x}")
+        print("State:")
+        print(f" \t {next_state}")
+        print("Reward:")
+        print(f" \t {reward}")
+        print("Done:")
+        print(f" \t {done}")
+        break

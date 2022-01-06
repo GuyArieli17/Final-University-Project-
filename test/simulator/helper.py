@@ -47,8 +47,6 @@ class ClusterMannager:
             self.mapper[road_idx] = np.array(category,dtype=object)
             # category.append(clusters)
         
-
-
     def __init__(self,traffic_road_id=TRAFFIC_ROAD_ID, number_of_lane=NUMBER_OF_LANE, road_length=ROAD_LENGTH
                         ,division=DIVISION,division_length=DIVISION_LENGTH) -> None:
         # save info
@@ -61,7 +59,6 @@ class ClusterMannager:
         self.mapper = dict()
         self._build_mapper()
         
-
     def push_car_to_cluster_info(self,distance: float,lane_idx: int,road_idx: int,value: float):
         is_first = distance < self.division[1]
         if is_first:
@@ -76,13 +73,8 @@ class ClusterMannager:
         add_to = self.mapper[road_idx][category_index]
         # if is_first:
         #     add_to = self.mapper[road_idx][category_index][lane_idx]
-        # print(cluster_index)
         add_to[cluster_index,0] += value
         add_to[cluster_index,1] += 1
-
-    # def _calc_cluster_mean(self,list):
-
-
 
     def calc_cluster_mean(self):
         output = []

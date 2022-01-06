@@ -34,13 +34,13 @@ if __name__ == "__main__":
     )
     for x in range(1_500):
         next_state, reward, done, _ = env.step(0)
-        print(f"____________________________ Step: {x}")
-        print("State:")
-        print(f" \t {next_state}")
-        print("Reward:")
-        print(f" \t {reward}")
-        print("Done:")
-        print(f" \t {done}")
+        # print(f"____________________________ Step: {x}")
+        # print("State:")
+        # # print(f" \t {next_state}")
+        # print("Reward:")
+        # print(f" \t {reward}")
+        # print("Done:")
+        # print(f" \t {done}")
         break
 
 

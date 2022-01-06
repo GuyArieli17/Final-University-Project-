@@ -12,7 +12,7 @@ docs_and_diagrams/
 
 # documentation
 .tox
-docs/_build/
+# docs/_build/
 
 # standard python ignore template
 .pytest_cache/
@@ -82,7 +82,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+# docs/_build/
 
 # PyBuilder
 target/

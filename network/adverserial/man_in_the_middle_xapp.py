@@ -8,6 +8,8 @@ import torch as th
 import time
 
 #  ----------------- Const Params -----------------
+from network.adverserial.utils import drawSimilarAction
+
 START_ACTION = 62_000
 GET_ACTION = 60_000
 ACTION_TYPE = 61_000
@@ -24,7 +26,6 @@ class DRLXapp:
         Todo: add commends
     """
     def _loop(self, xapp):
-        # TODO: change the action using action = drawSimilarAction(action)
         # TODO: change the state using state = adjustState(state)
         print("\t Start loop: ")
         start_connection = json.dumps({"test_send": 0}).encode()
@@ -32,6 +33,7 @@ class DRLXapp:
         xapp.rmr_send(start_connection, START_ACTION)
         action = 8
         while True:
+            action = drawSimilarAction(action)
             action_json = json.dumps({"Action": action}).encode()
             xapp.rmr_send(action_json, GET_ACTION)
             for (summary, sbuf) in xapp.rmr_get_messages():

@@ -4,6 +4,7 @@ FROM python:3.8
 COPY --from=nexus3.o-ran-sc.org:10002/o-ran-sc/bldr-alpine3-rmr:4.0.5 /usr/local/lib64/librmr* /usr/local/lib64/
 # RMR setup
 RUN mkdir -p /opt/route/
+COPY library .
 COPY network/test_route.rt /opt/route/test_route.rt
 ENV LD_LIBRARY_PATH /usr/local/lib/:/usr/local/lib64
 ENV RMR_SEED_RT /opt/route/test_route.rt
@@ -18,6 +19,7 @@ RUN pip3 install --upgrade pip
 RUN pip3 install ricxappframe==1.3.0
 RUN pip3 install numpy
 RUN pip3 install torch==1.10.1 -f https://download.pytorch.org/whl/torch_lts.html
+RUN pip3 install drl/
 
 #copy the file itself
 COPY network/drl/ .

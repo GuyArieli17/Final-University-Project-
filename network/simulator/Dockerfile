@@ -26,4 +26,4 @@ COPY network/simulator/ .
 
 # Run
 ENV PYTHONUNBUFFERED 1
-CMD python ping_xapp.py
+CMD python simulation_xapp.py

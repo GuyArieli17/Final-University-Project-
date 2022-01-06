@@ -23,7 +23,6 @@ RUN pip3 install drl/
 
 #copy the file itself
 COPY network/drl/ .
-
 # Run
 ENV PYTHONUNBUFFERED 1
 CMD python drl_xapp.py

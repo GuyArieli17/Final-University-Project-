@@ -46,9 +46,10 @@ class FlowGenerator:
         # create data capture
         list_of_abstract_flow: list = []
         flow_lst: list = []
-        # open file and save in var data
+        # load orginal json
         with open(origin_file_path, "r") as flow_file:
             list_of_abstract_flow = json.load(flow_file)
+        # run on original flow file and work with it
         for abstract_flow in list_of_abstract_flow:
             dist_list: list = distribution_function(max_steps)
             dist_list.sort()

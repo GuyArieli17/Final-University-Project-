@@ -80,6 +80,10 @@ class CityFlowAPI:
         rtn_state['lane_waiting_vehicle_count'] = self._eng.get_lane_waiting_vehicle_count()
         # map (lane)->(list of vehicle in lane)
         rtn_state['lane_vehicles'] = self._eng.get_lane_vehicles()
+        #Todo: add
+        rtn_state['vehicle_info_func'] = self._eng.get_vehicle_info
+        #Todo: add
+        rtn_state['vehicles'] = self._eng.get_vehicles(include_waiting=False)
         return rtn_state
 
     # reset the simulatio and all class data

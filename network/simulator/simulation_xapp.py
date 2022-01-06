@@ -9,7 +9,8 @@ from simulation import Environment
 
 #  ----------------- Const Params -----------------
 START_ACTION = 62_000
-GET_ACTION = 60_000
+# GET_ACTION = 60_000
+GET_ACTION = 61_000  # adversarial GET_ACTION
 
 #  ----------------- Simulation Params -----------------
 RANDOM_SEED = 2017

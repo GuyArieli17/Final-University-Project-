@@ -11,8 +11,6 @@ import time
 #  ----------------- Const Params -----------------
 START_ACTION = 62_000
 GET_ACTION = 60_000
-ACTION_TYPE = 61_000
-
 
 #  ----------------- Model Params -----------------
 
